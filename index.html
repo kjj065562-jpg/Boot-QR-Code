@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katzen-Abenteuer Geschenk</title>
+    <style>
+        /* Das Design der Seite */
+        body {
+            background-color: #000050; /* Sehr dunkles Blau */
+            color: #ffffff;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 3px solid #ffd700; /* Goldener Rand */
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            max-width: 400px;
+        }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .code-display {
+            display: block;
+            background-color: #ffd700;
+            color: #000050;
+            font-size: 32px;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 25px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="icon">🐾</div>
+        <h1>Geschenk gefunden!</h1>
+        <p>Die Katze hat etwas aus dem Gebüsch gezogen. Hier ist dein geheimer Code:</p>
+        
+        <div id="token-box" class="code-display">LADE...</div>
+
+        <p class="footer">Gib diesen Code im Discord mit dem Befehl <b>/einlösen</b> ein!</p>
+    </div>
+
+    <script>
+        // Diese Logik zieht den Code aus der URL (z.B. ?token=ABC123)
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const meinCode = urlParams.get('token');
+            const anzeige = document.getElementById('token-box');
+
+            if (meinCode) {
+                anzeige.innerText = meinCode;
+            } else {
+                anzeige.innerText = "KEIN CODE";
+                anzeige.style.backgroundColor = "#ff4444";
+                anzeige.style.color = "white";
+            }
+        };
+    </script>
+
+</body>
+</html>
